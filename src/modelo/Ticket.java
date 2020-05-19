@@ -31,7 +31,7 @@ public class Ticket {
 		return nroTicket;
 	}
 	
-	protected void setNroTicket(int nroTicket) {
+	private void setNroTicket(int nroTicket) {
 		this.nroTicket = nroTicket;
 	}
 	

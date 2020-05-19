@@ -14,7 +14,7 @@ public class FormaDePago {
 		return idFormaDePago;
 	}
 
-	protected void setIdFormaDePago(int idFormaDePago) {
+	private void setIdFormaDePago(int idFormaDePago) {
 		this.idFormaDePago = idFormaDePago;
 	}
 
