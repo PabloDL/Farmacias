@@ -1,0 +1,1 @@
+INDEX VERSION 1.131+C:\Users\Federico\Documents\GitHub\Farmacias\.metadata\.plugins\org.eclipse.jdt.core
