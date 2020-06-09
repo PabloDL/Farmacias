@@ -1,15 +1,15 @@
 package modelo;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class SerializadorTicket {
 	
-	public void debeDevolverLaRepresentacionJSONDeUnObjeto() {
-		final Ticket t = new Ticket(0, null, 0, null, null, null, null, null);
-		final Gson gson = new Gson();
-		final String representacionJSON = gson.toJson(t);
-//		assertEquals("{\"id\":46,\"nombre\":\"Miguel\",\"empresa\":\"Autentia\"}", representacionJSON);
-		System.out.print(representacionJSON);
+	public void debeDevolverLaRepresentacionJSONDeUnObjeto(Ticket t) {
+
+		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+		final String ticketToJson = prettyGson.toJson(t);
+		System.out.print(ticketToJson);
 	}
 
 	private void assertEquals(String string, String representacionJSON) {
