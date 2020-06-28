@@ -11,6 +11,7 @@ import modelo.Producto;
 import modelo.SerializadorTicket;
 import modelo.Sucursal;
 import modelo.Ticket;
+import datos.Persistidor;
 
 public class test {
 	public static void main (String [ ] args) {
@@ -29,6 +30,12 @@ public class test {
 		Ticket t = new Ticket(1, fecha, 200, f, eCobro, eAtendio, c,s);
 		
 		SerializadorTicket serializador = new SerializadorTicket();
-		serializador.debeDevolverLaRepresentacionJSONDeUnObjeto(t);
+		String jsonTicket = serializador.debeDevolverLaRepresentacionJSONDeUnObjeto(t);
+			
+		//Persistir datos
+		Persistidor persistidor = new Persistidor();
+		persistidor.persistirTicket(jsonTicket);
+		
+		
 	}
 }

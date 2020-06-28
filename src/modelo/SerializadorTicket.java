@@ -5,11 +5,13 @@ import com.google.gson.GsonBuilder;
 
 public class SerializadorTicket {
 	
-	public void debeDevolverLaRepresentacionJSONDeUnObjeto(Ticket t) {
+	public String debeDevolverLaRepresentacionJSONDeUnObjeto(Ticket t) {
 
 		Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
 		final String ticketToJson = prettyGson.toJson(t);
-		System.out.print(ticketToJson);
+		
+		//Devuelvo json con ticket
+		return ticketToJson;
 	}
 
 	private void assertEquals(String string, String representacionJSON) {
