@@ -61,25 +61,28 @@ public class test {
 		FormaDePago f2 = new FormaDePago(2,"Debito");
 		FormaDePago f3 = new FormaDePago(2,"Credito");
 		
-		Date fecha = new Date();
-		fecha.setDate(1);		
+		Date fecha1 = new Date();
+		fecha1.setDate(1);		
 		//TICKETS DIA 1
-		Ticket t1 = new Ticket(1, fecha, 100, f1, e1, e2, c1,s1);
-		Ticket t2 = new Ticket(2, fecha, 200, f2, e1, e2, c2,s1);
-		Ticket t3 = new Ticket(3, fecha, 150, f3, e3, e4, c3,s2);
-		Ticket t4 = new Ticket(4, fecha, 1200, f1, e3, e4, c4,s2);
-		//TICKETS DIA 2		
-		fecha.setDate(2);
-		Ticket t5 = new Ticket(5, fecha, 100, f1, e1, e2, c5,s1);
+		Ticket t1 = new Ticket(1, fecha1, 100, f1, e1, e2, c1,s1);
+		Ticket t2 = new Ticket(2, fecha1, 200, f2, e1, e2, c2,s1);
+		Ticket t3 = new Ticket(3, fecha1, 150, f3, e3, e4, c3,s2);
+		Ticket t4 = new Ticket(4, fecha1, 1200, f1, e3, e4, c4,s2);
+		//TICKETS DIA 2
+		Date fecha2 = new Date();
+		fecha2.setDate(2);
+		Ticket t5 = new Ticket(5, fecha2, 100, f1, e1, e2, c5,s1);
 		//TICKETS DIA 4
-		fecha.setDate(4);
-		Ticket t6 = new Ticket(6, fecha, 400, f2, e3, e4, c6,s2);
-		Ticket t7 = new Ticket(7, fecha, 500, f2, e3, e4, c6,s2);
-		Ticket t8 = new Ticket(8, fecha, 200, f3, e3, e4, c6,s2);
+		Date fecha3 = new Date();
+		fecha3.setDate(4);
+		Ticket t6 = new Ticket(6, fecha3, 400, f2, e3, e4, c6,s2);
+		Ticket t7 = new Ticket(7, fecha3, 500, f2, e3, e4, c6,s2);
+		Ticket t8 = new Ticket(8, fecha3, 200, f3, e3, e4, c6,s2);
 		//TICKETS DIA 6
-		fecha.setDate(6);
-		Ticket t9 = new Ticket(9, fecha, 1200, f3, e1, e2, c2,s1);
-		Ticket t10 = new Ticket(10, fecha, 500, f3, e3, e4, c2,s2);
+		Date fecha4 = new Date();
+		fecha4.setDate(6);
+		Ticket t9 = new Ticket(9, fecha4, 1200, f3, e1, e2, c2,s1);
+		Ticket t10 = new Ticket(10, fecha4, 500, f3, e3, e4, c2,s2);
 		
 		List<String> listaTickets = new ArrayList<String>();
 		
