@@ -55,7 +55,7 @@ public class test {
 		
 		//creo 2 sucursales
 		Sucursal s1 = new Sucursal(1, 1, new Domicilio(10, "calle", 1000, "localidad", "Provincia") , e1);
-		Sucursal s2 = new Sucursal(1, 2, new Domicilio(11, "calle", 1100, "localidad", "Provincia") , e2);
+		Sucursal s2 = new Sucursal(2, 2, new Domicilio(11, "calle", 1100, "localidad", "Provincia") , e2);
 		
 		//Creo 3 formas de pago
 		FormaDePago f1 = new FormaDePago(1,"Efectivo");
@@ -66,19 +66,34 @@ public class test {
 		fecha1.setDate(1);		
 		//TICKETS DIA 1
 		Ticket t1 = new Ticket(1, fecha1, 100, f1, e1, e2, c1,s1);
+		t1.agregarProductos(p1, 1);
+		
 		Ticket t2 = new Ticket(2, fecha1, 200, f2, e1, e2, c2,s1);
+		t2.agregarProductos(p1, 2);
+		
 		Ticket t3 = new Ticket(3, fecha1, 150, f3, e3, e4, c3,s2);
+		t3.agregarProductos(p1, 1);
+		t3.agregarProductos(p2, 1);
+		
 		Ticket t4 = new Ticket(4, fecha1, 1200, f1, e3, e4, c4,s2);
+		t4.agregarProductos(p3, 1);
 		//TICKETS DIA 2
 		Date fecha2 = new Date();
 		fecha2.setDate(2);
 		Ticket t5 = new Ticket(5, fecha2, 100, f1, e1, e2, c5,s1);
+		t5.agregarProductos(p2, 2);
 		//TICKETS DIA 4
 		Date fecha3 = new Date();
 		fecha3.setDate(4);
 		Ticket t6 = new Ticket(6, fecha3, 400, f2, e3, e4, c6,s2);
-		Ticket t7 = new Ticket(7, fecha3, 500, f2, e3, e4, c6,s2);
-		Ticket t8 = new Ticket(8, fecha3, 200, f3, e3, e4, c6,s2);
+		t6.agregarProductos(p3, 3);
+		t6.agregarProductos(p4, 10);
+		
+		Ticket t7 = new Ticket(7, fecha3, 75, f2, e3, e4, c6,s2);
+		t7.agregarProductos(p5, 1);
+		
+		Ticket t8 = new Ticket(8, fecha3, 100, f3, e3, e4, c6,s2);
+		t8.agregarProductos(p1, 1);
 		//TICKETS DIA 6
 		Date fecha4 = new Date();
 		fecha4.setDate(6);
