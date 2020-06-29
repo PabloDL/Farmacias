@@ -66,7 +66,7 @@ public class Persistidor {
 	        	System.out.print("Ya existe registro");
 	        }	     
 		}
-			
+		
 	}
 	
 }
