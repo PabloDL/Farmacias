@@ -16,6 +16,7 @@ import modelo.SerializadorTicket;
 import modelo.Sucursal;
 import modelo.Ticket;
 import datos.Persistidor;
+import datos.consultor;
 
 public class test {
 	public static void main (String [ ] args) {
@@ -23,6 +24,12 @@ public class test {
 		//Persistir datos
 		Persistidor persistidor = new Persistidor();
 		persistidor.persistirTickets(cargarTicketsGenericos(1));
+		
+		//Consultar datos
+		consultor consultor = new consultor();
+		consultor.consultaPunto1();
+
+		consultor.consultaPunto2();
 		
 	}
 	
@@ -61,7 +68,7 @@ public class test {
 		FormaDePago f1 = new FormaDePago(1,"Efectivo");
 		FormaDePago f2 = new FormaDePago(2,"Debito");
 		FormaDePago f3 = new FormaDePago(2,"Credito");
-		
+	
 		Date fecha1 = new Date();
 		fecha1.setDate(1);		
 		//TICKETS DIA 1
