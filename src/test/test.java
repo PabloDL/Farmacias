@@ -27,12 +27,20 @@ public class test {
 		
 		//Consultar datos
 		consultor consultor = new consultor();
+		System.out.print("CONSUTA 1:\n");
 		consultor.consultaPunto1();
-
-		consultor.consultaPunto2();
+		System.out.print("\n");
 		
+		System.out.print("CONSULTA 2:\n");
+		consultor.consultaPunto2();
+		System.out.print("\n");
+		
+		System.out.print("CONSULTA 4:\n");
+		consultor.consultaPunto4();
+		System.out.print("\n");
 	}
 	
+	@SuppressWarnings("deprecation")
 	public static List<String> cargarTicketsGenericos(int cantAGenerar) {
 		
 		//creo 2 obras sociales
@@ -54,11 +62,11 @@ public class test {
 		Empleado e4 = new Empleado(4,"Hank","Pym","222222222",oS1, new Domicilio(12, "calle", 900, "localidad", "Provincia") );
 		
 		//Creo 5 productos
-		Producto p1 = new Producto(1,"Ibuprofeno","descripcion","laboratorio",100);
-		Producto p2 = new Producto(2,"Paracetamol", "descripcion","laboratorio",50);
-		Producto p3 = new Producto(3,"Perfume","descripcion","laboratorio",1200);
-		Producto p4 = new Producto(4,"Curitas","descripcion","laboratorio",10);
-		Producto p5 = new Producto(51,"Amoxidal","descripcion","laboratorio",75);
+		Producto p1 = new Producto(1, "Farmacia","Ibuprofeno","laboratorio",100);
+		Producto p2 = new Producto(2, "Farmacia","Paracetamol","laboratorio",50);
+		Producto p3 = new Producto(3, "Perfumeria","Perfume","laboratorio",1200);
+		Producto p4 = new Producto(4, "Farmacia","Curitas","laboratorio",10);
+		Producto p5 = new Producto(51, "Farmacia","Amoxidal","laboratorio",75);
 		
 		//creo 2 sucursales
 		Sucursal s1 = new Sucursal(1, 1, new Domicilio(10, "calle", 1000, "localidad", "Provincia") , e1);

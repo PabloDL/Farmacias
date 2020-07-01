@@ -106,7 +106,7 @@ public class Ticket {
 	}
 	
 	public void agregarProductos(Producto p, int cantidad) {
-		Producto_has_Ticket nuevoProductoVendido = new Producto_has_Ticket(p.getCodigo(), this.nroTicket, p.getPrecio(), cantidad, (cantidad*p.getPrecio()));
+		Producto_has_Ticket nuevoProductoVendido = new Producto_has_Ticket(p, this.nroTicket, p.getPrecio(), cantidad, (cantidad*p.getPrecio()));
 		this.productos.add(nuevoProductoVendido);
 	}
 	

@@ -38,6 +38,7 @@ public class Persistidor {
 	
 	public void persistirTickets(List<String> jsonTickets) {
 		MongoClientURI connectionString = new MongoClientURI("mongodb://localhost:27017");
+		@SuppressWarnings("resource")
 		MongoClient mongoClient = new MongoClient(connectionString);
 		MongoDatabase database = mongoClient.getDatabase("Farma");
 		
@@ -60,10 +61,12 @@ public class Persistidor {
 	        if (collection.find(eq("nroTicket", tAInsertar.getNroTicket())).first() == null) {
 		        //Si no existe inserto en coleccion
 	        	System.out.print("NO existe registro");
+	        	System.out.print("\n");
 				collection.insertOne(documentoTicket);	        	
 	        }
 	        else {	        //Si no existe informo
 	        	System.out.print("Ya existe registro");
+	        	System.out.print("\n");
 	        }	     
 		}
 		
