@@ -35,9 +35,9 @@ public class test {
 		consultor.consultaPunto2();
 		System.out.print("\n");
 		
-		System.out.print("CONSULTA 4:\n");
-		consultor.consultaPunto4();
-		System.out.print("\n");
+//		System.out.print("CONSULTA 4:\n");
+//		consultor.consultaPunto4();
+//		System.out.print("\n");
 	}
 	
 	@SuppressWarnings("deprecation")

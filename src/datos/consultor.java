@@ -32,7 +32,8 @@ public class consultor {
 		 * Requires the MongoDB Java Driver.
 		 * https://mongodb.github.io/mongo-java-driver
 		 */
-		 
+		 System.out.println("\n");
+		System.out.println("Por Sucursal:");
 
 		MongoClient mongoClient = new MongoClient(
 		    new MongoClientURI(
@@ -48,6 +49,16 @@ public class consultor {
 		while (it.hasNext()) {
 			
 			System.out.println(it.next().toJson());
+		}
+		System.out.println("\n");
+		System.out.println("Por Cadena:");
+		
+		AggregateIterable<Document> result2 = collection.aggregate(Arrays.asList(group(null, sum("Total de ventas cadena", "$TotalVenta"))));
+		
+		MongoCursor<Document> it2 = result2.iterator();
+		while (it2.hasNext()) {
+			
+			System.out.println(it2.next().toJson());
 		}
 	}
 	 
@@ -79,39 +90,39 @@ public class consultor {
 		
 	}
 	 
-	 public void consultaPunto4(){
-			/*
-			 * Requires the MongoDB Java Driver.
-			 * https://mongodb.github.io/mongo-java-driver
-			 */
-			 
-
-			MongoClient mongoClient = new MongoClient(
-			    new MongoClientURI(
-			        "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass%20Community&ssl=false"
-			    )
-			);
-			MongoDatabase database = mongoClient.getDatabase("Farma");
-			MongoCollection<Document> collection = database.getCollection("Tickets");
-
-			AggregateIterable<Document> result = collection.aggregate(Arrays.asList(group("$sucursal.idSucursal", sum("Total de ventas por punto", "$TotalVenta"))));
-			
-			MongoCursor<Document> it = result.iterator();
-			while (it.hasNext()) {
-				
-				System.out.println(it.next().toJson());
-			}
-			
-			
-			result = collection.aggregate(Arrays.asList(and(gte("$fecha", new java.util.Date(1593648000000L)), lte("$fecha", new java.util.Date(1594080000000L))), group("$productos.producto.tipo", sum("Total de ventas de Farmacia", "$TotalVenta"))));
-			
-			it = result.iterator();
-			
-			while (it.hasNext()) {
-				
-				System.out.println(it.next().toJson());
-			}
-		}
+//	 public void consultaPunto4(){
+//			/*
+//			 * Requires the MongoDB Java Driver.
+//			 * https://mongodb.github.io/mongo-java-driver
+//			 */
+//			 
+//
+//			MongoClient mongoClient = new MongoClient(
+//			    new MongoClientURI(
+//			        "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass%20Community&ssl=false"
+//			    )
+//			);
+//			MongoDatabase database = mongoClient.getDatabase("Farma");
+//			MongoCollection<Document> collection = database.getCollection("Tickets");
+//
+//			AggregateIterable<Document> result = collection.aggregate(Arrays.asList(group("$sucursal.idSucursal", sum("Total de ventas por punto", "$TotalVenta"))));
+//			
+//			MongoCursor<Document> it = result.iterator();
+//			while (it.hasNext()) {
+//				
+//				System.out.println(it.next().toJson());
+//			}
+//			
+//			
+//			result = collection.aggregate(Arrays.asList(and(gte("$fecha", new java.util.Date(1593648000000L)), lte("$fecha", new java.util.Date(1594080000000L))), group("$productos.producto.tipo", sum("Total de ventas de Farmacia", "$TotalVenta"))));
+//			
+//			it = result.iterator();
+//			
+//			while (it.hasNext()) {
+//				
+//				System.out.println(it.next().toJson());
+//			}
+//		}
 }
 
 
