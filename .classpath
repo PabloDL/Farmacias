@@ -6,9 +6,9 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/ruso9/Documents/GitHub/BD2/Librerias que tienen que agregar/bson-3.4.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ruso9/Documents/GitHub/BD2/Librerias que tienen que agregar/mongodb-driver-3.4.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ruso9/Documents/GitHub/BD2/Librerias que tienen que agregar/mongodb-driver-core-3.4.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ruso9/Documents/GitHub/BD2/Librerias que tienen que agregar/gson-2.8.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/usuario/Documents/GitHub/Farmacias/lib/bson-3.4.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/usuario/Documents/GitHub/Farmacias/lib/gson-2.8.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/usuario/Documents/GitHub/Farmacias/lib/mongodb-driver-3.4.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/usuario/Documents/GitHub/Farmacias/lib/mongodb-driver-core-3.4.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

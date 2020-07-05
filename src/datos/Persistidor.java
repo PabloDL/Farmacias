@@ -1,17 +1,19 @@
 package datos;
 
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import org.bson.Document;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.util.JSON;
 
 import modelo.Ticket;
+import util.GsonUTCDateAdapter;
 
 import static com.mongodb.client.model.Filters.*;
 
@@ -50,7 +52,12 @@ public class Persistidor {
 		Iterator<String> it = jsonTickets.iterator();
 		
 		while (it.hasNext()) {
-			Gson gson = new Gson();
+			GsonBuilder gsonBuilder = new GsonBuilder();
+			gsonBuilder.setPrettyPrinting();
+			gsonBuilder.registerTypeAdapter(Date.class, new GsonUTCDateAdapter());
+			
+			Gson gson = gsonBuilder.create();
+			
 			String aInsertar = new String(it.next());
 			
 			Ticket tAInsertar = gson.fromJson(aInsertar, Ticket.class);
@@ -58,15 +65,17 @@ public class Persistidor {
 			Map map = gson.fromJson(aInsertar, Map.class);
 	        Document documentoTicket = new Document(map);
 	        
+	        //Document doc = Document.parse( aInsertar);
+	        
 	        if (collection.find(eq("nroTicket", tAInsertar.getNroTicket())).first() == null) {
 		        //Si no existe inserto en coleccion
-	        	System.out.print("NO existe registro");
-	        	System.out.print("\n");
+	        	//System.out.print("NO existe registro");
+	        	//System.out.print("\n");
 				collection.insertOne(documentoTicket);	        	
 	        }
 	        else {	        //Si no existe informo
-	        	System.out.print("Ya existe registro");
-	        	System.out.print("\n");
+	        	//System.out.print("Ya existe registro");
+	        	//System.out.print("\n");
 	        }	     
 		}
 		

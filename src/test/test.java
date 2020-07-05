@@ -35,6 +35,19 @@ public class test {
 		consultor.consultaPunto2();
 		System.out.print("\n");
 		
+		System.out.print("CONSULTA PUNTO 3 POR CADENA:\n");
+		consultor.consultaPunto3();
+		System.out.print("\n");
+		
+		System.out.print("CONSULTA PUNTO 4 POR SUCURSAL:\n");
+		consultor.consultaPunto4PorSucursal();
+		System.out.print("\n");
+		
+		System.out.print("CONSULTA PUNTO 4 POR CADENA:\n");
+		consultor.consultaPunto4PorCadena();
+		System.out.print("\n");
+	
+		
 //		System.out.print("CONSULTA 4:\n");
 //		consultor.consultaPunto4();
 //		System.out.print("\n");
@@ -113,7 +126,10 @@ public class test {
 		Date fecha4 = new Date();
 		fecha4.setDate(6);
 		Ticket t9 = new Ticket(9, fecha4, 1200, f3, e1, e2, c2,s1);
+		t9.agregarProductos(p3, 1);		
+		
 		Ticket t10 = new Ticket(10, fecha4, 500, f3, e3, e4, c2,s2);
+		t10.agregarProductos(p1, 5);
 		
 		List<String> listaTickets = new ArrayList<String>();
 		

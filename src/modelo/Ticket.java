@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import modelo.Empleado; 
-import modelo.Cliente;
-
 public class Ticket {
 	private int nroTicket;
 	private Date fecha;
