@@ -1,6 +1,7 @@
-consulta 1
+-----------------------------1 por sucursal------------------------
+
 [
-{ $match: {fecha:{$gte: ISODate("2020-06-01T00:00:00Z"), $lte: ISODate("2020-07-03T24:00:00Z")}}},
+{ $match: {fecha:{$gte: ISODate("2020-06-02T00:00:00Z"), $lte: ISODate("2020-08-04T00:00:00Z")}}},
 {
 	$group: {
 		_id: "$sucursal.idSucursal",
@@ -10,9 +11,10 @@ consulta 1
 		}
 }]
 
-B)
+---------------------------1 por cadena----------------------------------------
+
 [
-{ $match: {fecha:{$gte: ISODate("2020-06-02T00:00:00Z"), $lte: ISODate("2020-07-03T24:00:00Z")}}},
+{ $match: {fecha:{$gte: ISODate("2020-06-02T00:00:00Z"), $lte: ISODate("2020-08-04T00:00:00Z")}}},
 {
 	$group: {
 		_id: null,
@@ -23,9 +25,10 @@ B)
 		}
 }]
 
-consulta 2 
+-------------------consulta 2------------------------------ 
+
 [
-{$match:{fecha:{$gte: ISODate("2020-06-02T00:00:00Z"), $lte: ISODate("2020-07-03T24:00:00Z")}}},
+{$match:{fecha:{$gte: ISODate("2020-06-02T00:00:00Z"), $lte: ISODate("2020-08-04T00:00:00Z")}}},
 {$group:{
 	_id:{  
 		"sucursal": "$sucursal.idSucursal",
@@ -42,25 +45,52 @@ consulta 2
 }}
 ]
 
-consulta 4
-[
-{$match:{fecha:{$gte: ISODate("2020-06-02T00:00:00Z"), $lte: ISODate("2020-07-03T24:00:00Z")}}},
-{$unwind:{
-  path: "$productos",
+----------------------- 4 por sucursal -------------------------------------
+
+[{$match: {
+  fecha: {
+    $gte: ISODate('2020-06-02T00:00:00.000Z'),
+    $lte: ISODate('2020-08-04T00:00:00.000Z')
+  }
+}}, {$unwind: {
+  path: '$productos',
   includeArrayIndex: 'string',
   preserveNullAndEmptyArrays: true
-}},
-{$group:{
-	_id:{  
-	  "sucursal": "$sucursal.idSucursal",
-    productos:{
-      producto:{
-        tipo : "$productos.producto.tipo"
+}}, {$group: {
+  _id: {
+    sucursal: '$sucursal.idSucursal',
+    productos: {
+      producto: {
+        tipo: '$productos.producto.tipo',
+        descripcion : '$productos.producto.descripcion'
       }
-	  }
-	},
-	"Total venta": { 
-			$sum: "$TotalVenta"
-			
-		}
+    }
+  },
+  'Total venta':  {$sum: '$TotalVenta'},
+  'Cantidad vendida ' : {$sum:'$productos.cantidad'}
+}}]
+
+-------------------------- 4 por cadena ------------------------------------------
+
+[{$match: {
+  fecha: {
+    $gte: ISODate('2020-06-02T00:00:00.000Z'),
+    $lte: ISODate('2020-08-04T00:00:00.000Z')
+  }
+}}, {$unwind: {
+  path: '$productos',
+  includeArrayIndex: 'string',
+  preserveNullAndEmptyArrays: true
+}}, {$group: {
+  _id: {
+    sucursal: null,
+    productos: {
+      producto: {
+        tipo: '$productos.producto.tipo',
+        descripcion : '$productos.producto.descripcion'
+      }
+    }
+  },
+  'Total venta':  {$sum: '$TotalVenta'},
+  'Cantidad vendida ' : {$sum:'$productos.cantidad'}
 }}]
