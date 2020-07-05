@@ -43,7 +43,14 @@ public class consultor {
 		MongoDatabase database = mongoClient.getDatabase("Farma");
 		MongoCollection<Document> collection = database.getCollection("Tickets");
 
-		AggregateIterable<Document> result = collection.aggregate(Arrays.asList(group("$sucursal.idSucursal", sum("Total de ventas por punto", "$TotalVenta"))));
+		AggregateIterable<Document> result = collection.aggregate(
+				Arrays.asList(
+						match(and(
+								gte("fecha", new java.util.Date(1590969600000L)), 
+								lte("fecha", new java.util.Date(1593820800000L)))), 
+						group("$sucursal.idSucursal", sum("Total venta", "$TotalVenta"))
+				)
+		);
 		
 		MongoCursor<Document> it = result.iterator();
 		while (it.hasNext()) {
@@ -61,7 +68,7 @@ public class consultor {
 			System.out.println(it2.next().toJson());
 		}
 	}
-	 
+	 	 
 	 public void consultaPunto2(){
 		/*
 		 * Requires the MongoDB Java Driver.
