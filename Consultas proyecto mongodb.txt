@@ -1,0 +1,66 @@
+consulta 1
+[
+{ $match: {fecha:{$gte: ISODate("2020-06-01T00:00:00Z"), $lte: ISODate("2020-07-03T24:00:00Z")}}},
+{
+	$group: {
+		_id: "$sucursal.idSucursal",
+		"Total venta": { 
+			$sum: "$TotalVenta"
+		}
+		}
+}]
+
+B)
+[
+{ $match: {fecha:{$gte: ISODate("2020-06-02T00:00:00Z"), $lte: ISODate("2020-07-03T24:00:00Z")}}},
+{
+	$group: {
+		_id: null,
+		"Total venta": { 
+			$sum: "$TotalVenta"
+			
+		}
+		}
+}]
+
+consulta 2 
+[
+{$match:{fecha:{$gte: ISODate("2020-06-02T00:00:00Z"), $lte: ISODate("2020-07-03T24:00:00Z")}}},
+{$group:{
+	_id:{  
+		"sucursal": "$sucursal.idSucursal",
+    		cliente:{
+      			obraSocial:{
+        			nombre : "$cliente.obraSocial.nombre"
+      			}
+	  	}
+	},
+	"Total venta": { 
+			$sum: "$TotalVenta"
+			
+		}
+}}
+]
+
+consulta 4
+[
+{$match:{fecha:{$gte: ISODate("2020-06-02T00:00:00Z"), $lte: ISODate("2020-07-03T24:00:00Z")}}},
+{$unwind:{
+  path: "$productos",
+  includeArrayIndex: 'string',
+  preserveNullAndEmptyArrays: true
+}},
+{$group:{
+	_id:{  
+	  "sucursal": "$sucursal.idSucursal",
+    productos:{
+      producto:{
+        tipo : "$productos.producto.tipo"
+      }
+	  }
+	},
+	"Total venta": { 
+			$sum: "$TotalVenta"
+			
+		}
+}}]
