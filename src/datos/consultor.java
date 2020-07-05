@@ -17,6 +17,8 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import org.bson.conversions.Bson;
 import java.util.concurrent.TimeUnit;
+
+import org.bson.BsonNull;
 import org.bson.Document;
 
 import static com.mongodb.client.model.Filters.and;
@@ -60,7 +62,14 @@ public class consultor {
 		System.out.println("\n");
 		System.out.println("Por Cadena:");
 		
-		AggregateIterable<Document> result2 = collection.aggregate(Arrays.asList(group(null, sum("Total de ventas cadena", "$TotalVenta"))));
+		AggregateIterable<Document> result2 = collection.aggregate(
+				Arrays.asList(
+						match(and(
+								gte("fecha", new java.util.Date(1590969600000L)), 
+								lte("fecha", new java.util.Date(1593820800000L)))), 
+						group(new BsonNull(), sum("Total venta", "$TotalVenta"))
+				)
+		);
 		
 		MongoCursor<Document> it2 = result2.iterator();
 		while (it2.hasNext()) {
