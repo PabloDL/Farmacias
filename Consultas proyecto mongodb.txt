@@ -45,6 +45,46 @@
 }}
 ]
 
+-----------------------3 por sucursal -------------------------------------
+
+[{$match: {
+  fecha: {
+    $gte: ISODate('2020-06-02T00:00:00.000Z'),
+    $lte: ISODate('2020-08-04T00:00:00.000Z')
+  }
+}}, {$unwind: {
+  path: '$formaDePago',
+  includeArrayIndex: 'string',
+  preserveNullAndEmptyArrays: true
+}}, {$group: {
+  _id: {
+    sucursal: '$sucursal.idSucursal',
+    formaDePago : {descripcion : "$formaDePago.descripcion"}},
+  'Total cobranza': {
+    $sum: '$TotalVenta'
+  }
+}}]
+
+-----------------------3 por cadena--------------------------------
+
+[{$match: {
+  fecha: {
+    $gte: ISODate('2020-06-02T00:00:00.000Z'),
+    $lte: ISODate('2020-08-04T00:00:00.000Z')
+  }
+}}, {$unwind: {
+  path: '$formaDePago',
+  includeArrayIndex: 'string',
+  preserveNullAndEmptyArrays: true
+}}, {$group: {
+  _id: {
+    sucursal: null,
+    formaDePago : {descripcion : "$formaDePago.descripcion"}},
+  'Total cobranza': {
+    $sum: '$TotalVenta'
+  }
+}}]
+
 ----------------------- 4 por sucursal -------------------------------------
 
 [{$match: {
