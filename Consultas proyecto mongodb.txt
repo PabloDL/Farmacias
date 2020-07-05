@@ -134,3 +134,29 @@
   'Total_venta':  {$sum: '$TotalVenta'},
   'Cantidad_vendida ' : {$sum:'$productos.cantidad'}
 }}]
+
+-------------- consulta 7 por cadena-----------------
+
+[{$match: {
+  fecha: {
+    $gte: ISODate('2020-06-02T00:00:00.000Z'),
+    $lte: ISODate('2020-08-04T00:00:00.000Z')
+  }
+}}, {$unwind: {
+  path: '$productos',
+  includeArrayIndex: 'string',
+  preserveNullAndEmptyArrays: true
+}}, {$group: {
+  _id: {
+
+        cliente : '$cliente.nombre',
+    apellido : '$cliente.apelido',
+    dni : '$cliente.dni'
+  },
+  'Total_cobranza': {
+    $sum: '$TotalVenta'
+  }
+
+}}, {$sort: {
+  'Total_cobranza': -1
+}}]
