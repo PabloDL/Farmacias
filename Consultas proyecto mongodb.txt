@@ -1,0 +1,136 @@
+-----------------------------1 por sucursal------------------------
+
+[
+{ $match: {fecha:{$gte: ISODate("2020-06-02T00:00:00Z"), $lte: ISODate("2020-08-04T00:00:00Z")}}},
+{
+	$group: {
+		_id: "$sucursal.idSucursal",
+		"Total venta": { 
+			$sum: "$TotalVenta"
+		}
+		}
+}]
+
+---------------------------1 por cadena----------------------------------------
+
+[
+{ $match: {fecha:{$gte: ISODate("2020-06-02T00:00:00Z"), $lte: ISODate("2020-08-04T00:00:00Z")}}},
+{
+	$group: {
+		_id: null,
+		"Total venta": { 
+			$sum: "$TotalVenta"
+			
+		}
+		}
+}]
+
+-------------------consulta 2------------------------------ 
+
+[
+{$match:{fecha:{$gte: ISODate("2020-06-02T00:00:00Z"), $lte: ISODate("2020-08-04T00:00:00Z")}}},
+{$group:{
+	_id:{  
+		"sucursal": "$sucursal.idSucursal",
+    		cliente:{
+      			obraSocial:{
+        			nombre : "$cliente.obraSocial.nombre"
+      			}
+	  	}
+	},
+	"Total venta": { 
+			$sum: "$TotalVenta"
+			
+		}
+}}
+]
+
+-----------------------3 por sucursal -------------------------------------
+
+[{$match: {
+  fecha: {
+    $gte: ISODate('2020-06-02T00:00:00.000Z'),
+    $lte: ISODate('2020-08-04T00:00:00.000Z')
+  }
+}}, {$unwind: {
+  path: '$formaDePago',
+  includeArrayIndex: 'string',
+  preserveNullAndEmptyArrays: true
+}}, {$group: {
+  _id: {
+    sucursal: '$sucursal.idSucursal',
+    formaDePago : {descripcion : "$formaDePago.descripcion"}},
+  'Total cobranza': {
+    $sum: '$TotalVenta'
+  }
+}}]
+
+-----------------------3 por cadena--------------------------------
+
+[{$match: {
+  fecha: {
+    $gte: ISODate('2020-06-02T00:00:00.000Z'),
+    $lte: ISODate('2020-08-04T00:00:00.000Z')
+  }
+}}, {$unwind: {
+  path: '$formaDePago',
+  includeArrayIndex: 'string',
+  preserveNullAndEmptyArrays: true
+}}, {$group: {
+  _id: {
+    sucursal: null,
+    formaDePago : {descripcion : "$formaDePago.descripcion"}},
+  'Total cobranza': {
+    $sum: '$TotalVenta'
+  }
+}}]
+
+----------------------- 4 por sucursal -------------------------------------
+
+[{$match: {
+  fecha: {
+    $gte: ISODate('2020-06-02T00:00:00.000Z'),
+    $lte: ISODate('2020-08-04T00:00:00.000Z')
+  }
+}}, {$unwind: {
+  path: '$productos',
+  includeArrayIndex: 'string',
+  preserveNullAndEmptyArrays: true
+}}, {$group: {
+  _id: {
+    sucursal: '$sucursal.idSucursal',
+    productos: {
+      producto: {
+        tipo: '$productos.producto.tipo',
+        descripcion : '$productos.producto.descripcion'
+      }
+    }
+  },
+  'Total venta':  {$sum: '$TotalVenta'},
+  'Cantidad vendida ' : {$sum:'$productos.cantidad'}
+}}]
+
+-------------------------- 4 por cadena ------------------------------------------
+
+[{$match: {
+  fecha: {
+    $gte: ISODate('2020-06-02T00:00:00.000Z'),
+    $lte: ISODate('2020-08-04T00:00:00.000Z')
+  }
+}}, {$unwind: {
+  path: '$productos',
+  includeArrayIndex: 'string',
+  preserveNullAndEmptyArrays: true
+}}, {$group: {
+  _id: {
+    sucursal: null,
+    productos: {
+      producto: {
+        tipo: '$productos.producto.tipo',
+        descripcion : '$productos.producto.descripcion'
+      }
+    }
+  },
+  'Total venta':  {$sum: '$TotalVenta'},
+  'Cantidad vendida ' : {$sum:'$productos.cantidad'}
+}}]
