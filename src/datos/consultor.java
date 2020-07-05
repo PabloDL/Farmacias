@@ -94,9 +94,20 @@ public class consultor {
 		MongoCollection<Document> collection = database.getCollection("Tickets");
 
 
-		AggregateIterable<Document> result = collection.aggregate(Arrays.asList(match(and(gte("fecha", 
-	    new java.util.Date(1590969600000L)), lte("fecha", 
-	    new java.util.Date(1591056000000L)))), group("$sucursal.idSucursal", sum("Total venta", "$TotalVenta"))));
+		AggregateIterable<Document> result = collection.aggregate(
+				Arrays.asList(
+						match(and(
+								gte("fecha", new java.util.Date(1590969600000L)),
+								lte("fecha", new java.util.Date(1593820800000L)))), 
+						group(and(
+								eq("sucursal", "$sucursal.idSucursal"), 
+								eq("cliente", 
+								eq("obraSocial", 
+								eq("nombre", "$cliente.obraSocial.nombre")))), 
+						sum("Total venta", "$TotalVenta"))
+				)
+		);
+
 		
 		MongoCursor<Document> it = result.iterator();
 		while (it.hasNext()) {
