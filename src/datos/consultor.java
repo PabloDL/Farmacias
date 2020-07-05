@@ -30,7 +30,18 @@ import static com.mongodb.client.model.Filters.lte;
 import static com.mongodb.client.model.Aggregates.match;
 import static com.mongodb.client.model.Aggregates.unwind;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class consultor {
+	
+	
+	public consultor() {
+		super();
+		Logger mongoLogger = Logger.getLogger( "org.mongodb.driver" );
+		mongoLogger.setLevel(Level.SEVERE); 
+
+	}
 
 	 public void consultaPunto1(){
 		/*

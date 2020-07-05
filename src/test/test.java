@@ -27,7 +27,7 @@ public class test {
 		
 		//Consultar datos
 		consultor consultor = new consultor();
-		System.out.print("CONSUTA 1:\n");
+		System.out.print("CONSULTA 1:\n");
 		consultor.consultaPunto1();
 		System.out.print("\n");
 		
