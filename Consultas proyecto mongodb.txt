@@ -60,7 +60,7 @@
   _id: {
     sucursal: '$sucursal.idSucursal',
     formaDePago : {descripcion : "$formaDePago.descripcion"}},
-  'Total cobranza': {
+  'Total_cobranza': {
     $sum: '$TotalVenta'
   }
 }}]
@@ -80,7 +80,7 @@
   _id: {
     sucursal: null,
     formaDePago : {descripcion : "$formaDePago.descripcion"}},
-  'Total cobranza': {
+  'Total_cobranza': {
     $sum: '$TotalVenta'
   }
 }}]
@@ -99,11 +99,11 @@
 }}, {$group: {
   _id: {
     sucursal: '$sucursal.idSucursal',
-    productos: {
+
       producto: {
         tipo: '$productos.producto.tipo',
         descripcion : '$productos.producto.descripcion'
-      }
+      
     }
   },
   'Total venta':  {$sum: '$TotalVenta'},
@@ -124,13 +124,13 @@
 }}, {$group: {
   _id: {
     sucursal: null,
-    productos: {
+
       producto: {
         tipo: '$productos.producto.tipo',
         descripcion : '$productos.producto.descripcion'
-      }
+      
     }
   },
-  'Total venta':  {$sum: '$TotalVenta'},
-  'Cantidad vendida ' : {$sum:'$productos.cantidad'}
+  'Total_venta':  {$sum: '$TotalVenta'},
+  'Cantidad_vendida ' : {$sum:'$productos.cantidad'}
 }}]
