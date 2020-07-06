@@ -1,14 +1,14 @@
 package util;
 
-public class ObjetoConsulta3 {
-//	{ "_id" : { "sucursal" : 1.0, "formaDePago" : { "descripcion" : "Credito" } }, "Total_cobranza" : 1200.0 }
-	private _IdConsulta3 _id;
+public class ObjetoConsulta7 {
+//	{ "_id" : { "cliente" : "Juan", "apellido" : "Gomez", "dni" : 2.0 }, "Total_cobranza" : 1900.0 }
+	private _IdConsulta7 _id;
 	private int Total_cobranza;
 	
-	public _IdConsulta3 get_id() {
+	public _IdConsulta7 get_id() {
 		return _id;
 	}
-	public void set_id(_IdConsulta3 _id) {
+	public void set_id(_IdConsulta7 _id) {
 		this._id = _id;
 	}
 	public int getTotal_cobranza() {

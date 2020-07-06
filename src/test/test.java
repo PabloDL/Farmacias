@@ -35,7 +35,7 @@ public class test {
 		consultor.consultaPunto2();
 		System.out.print("\n");
 		
-		System.out.print("CONSULTA PUNTO 3 POR CADENA:\n");
+		System.out.print("CONSULTA PUNTO 3");
 		consultor.consultaPunto3();
 		System.out.print("\n");
 		
@@ -45,6 +45,18 @@ public class test {
 		
 		System.out.print("CONSULTA PUNTO 4 POR CADENA:\n");
 		consultor.consultaPunto4PorCadena();
+		System.out.print("\n");
+		
+		System.out.print("CONSULTA 5 - EJEMPLO SUCURSAL 1:\n");
+		consultor.consultaPunto5PorSucursal();
+		System.out.print("\n");
+		
+		System.out.print("CONSULTA 7 - EJEMPLO SUCURSAL 2:");
+		consultor.consultaPunto7();
+		System.out.print("\n");
+		
+		System.out.print("CONSULTA 8 - EJEMPLO SUCURSAL 1 Y POR CADENA:");
+		consultor.consultaPunto8();
 		System.out.print("\n");
 	
 		
