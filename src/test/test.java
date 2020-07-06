@@ -19,6 +19,7 @@ import datos.Persistidor;
 import datos.consultor;
 
 public class test {
+	
 	public static void main (String [ ] args) {
 		
 		//Persistir datos
@@ -27,42 +28,97 @@ public class test {
 		
 		//Consultar datos
 		consultor consultor = new consultor();
-		System.out.print("CONSULTA 1:\n");
-		consultor.consultaPunto1();
+		/*
+		 * CONSULTA 1
+		 */
+		System.out.print("CONSULTA 1 - FILTRADO POR SUCURSAL:\n");
+		consultor.consultaPunto1(1);
+		System.out.print("\n");		
+		System.out.print("CONSULTA 1 - FILTRADO CADENA:\n");
+		consultor.consultaPunto1(-1);
 		System.out.print("\n");
-		
-		System.out.print("CONSULTA 2:\n");
-		consultor.consultaPunto2();
+		System.out.print("*****************************************************************************\n");
+		/*
+		 * CONSULTA 2
+		 */
+		System.out.print("CONSULTA 2 - FILTRADO POR SUCURSAL:\n");
+		consultor.consultaPunto2(1);
 		System.out.print("\n");
-		
-		System.out.print("CONSULTA PUNTO 3");
-		consultor.consultaPunto3();
+		System.out.print("CONSULTA 2 - FILTRADO CADENA:\n");
+		consultor.consultaPunto2(-1);
 		System.out.print("\n");
-		
-		System.out.print("CONSULTA PUNTO 4 POR SUCURSAL:\n");
-		consultor.consultaPunto4PorSucursal();
+		System.out.print("*****************************************************************************\n");
+		/*
+		 * CONSULTA 3
+		 */
+		System.out.print("CONSULTA 3 - FILTRADO POR SUCURSAL:\n");
+		consultor.consultaPunto3(1);
 		System.out.print("\n");
-		
-		System.out.print("CONSULTA PUNTO 4 POR CADENA:\n");
-		consultor.consultaPunto4PorCadena();
+		System.out.print("CONSULTA 3 - FILTRADO CADENA:\n");
+		consultor.consultaPunto3(-1);
 		System.out.print("\n");
-		
-		System.out.print("CONSULTA 5 - EJEMPLO SUCURSAL 1:\n");
-		consultor.consultaPunto5PorSucursal();
+		System.out.print("*****************************************************************************\n");
+		/*
+		 * CONSULTA 4
+		 */
+		System.out.print("CONSULTA 4 - FILTRADO CADENA:\n");
+		consultor.consultaPunto4(1);
 		System.out.print("\n");
-		
-		System.out.print("CONSULTA 7 - EJEMPLO SUCURSAL 2:");
-		consultor.consultaPunto7();
+		System.out.print("CONSULTA 4 - FILTRADO POR SUCURSAL:\n");
+		consultor.consultaPunto4(-1);
 		System.out.print("\n");
-		
-		System.out.print("CONSULTA 8 - EJEMPLO SUCURSAL 1 Y POR CADENA:");
-		consultor.consultaPunto8();
+		System.out.print("*****************************************************************************\n");
+		/*
+		 * CONSULTA 5
+		 */
+		System.out.print("CONSULTA 5 - FILTRADO POR SUCURSAL 1:\n");
+		consultor.consultaPunto5(1);
 		System.out.print("\n");
-	
+		System.out.print("CONSULTA 5 - FILTRADO POR SUCURSAL 2:\n");
+		consultor.consultaPunto5(2);
+		System.out.print("\n");
+		System.out.print("CONSULTA 5 - FILTRADO CADENA:\n");
+		consultor.consultaPunto5(-1);
+		System.out.print("\n");
+		System.out.print("*****************************************************************************\n");
 		
-//		System.out.print("CONSULTA 4:\n");
-//		consultor.consultaPunto4();
-//		System.out.print("\n");
+		/*
+		 * CONSULTA 6
+		 */
+		System.out.print("CONSULTA 6 - FILTRADO POR SUCURSAL:\n");
+		consultor.consultaPunto6(1);
+		System.out.print("\n");
+		System.out.print("CONSULTA 6 - FILTRADO CADENA:\n");
+		consultor.consultaPunto6(-1);
+		System.out.print("\n");
+		System.out.print("*****************************************************************************\n");
+		/*
+		 * CONSULTA 7
+		 */
+		System.out.print("CONSULTA 7 - FILTRADO POR SUCURSAL 1:\n");
+		consultor.consultaPunto7(1);
+		System.out.print("\n");
+		System.out.print("CONSULTA 7 - FILTRADO POR SUCURSAL 2:\n");
+		consultor.consultaPunto7(2);
+		System.out.print("\n");
+		System.out.print("CONSULTA 7 - FILTRADO CADENA:\n");
+		consultor.consultaPunto7(-1);
+		System.out.print("\n");
+		System.out.print("*****************************************************************************\n");
+		/*
+		 * CONSULTA 8
+		 */
+		System.out.print("CONSULTA 8 - FILTRADO POR SUCURSAL 1:\n");
+		consultor.consultaPunto8(1);
+		System.out.print("\n");
+		System.out.print("CONSULTA 8 - FILTRADO POR SUCURSAL 2:\n");
+		consultor.consultaPunto8(2);
+		System.out.print("\n");
+		System.out.print("CONSULTA 8 - FILTRADO CADENA:\n");
+		consultor.consultaPunto8(-1);
+		System.out.print("\n");
+		System.out.print("*****************************************************************************\n");
+		
 	}
 	
 	@SuppressWarnings("deprecation")
