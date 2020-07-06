@@ -27,7 +27,7 @@ public class _Id {
 		if (sucursal == -1) {
 			return  producto.toString();
 		}
-		return "Sucursal N° " + sucursal + " >> " + producto.toString();
+		return "Sucursal N° " + sucursal + " | " + producto.toString();
 	}
 	
 }

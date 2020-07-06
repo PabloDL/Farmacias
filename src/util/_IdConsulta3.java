@@ -31,7 +31,7 @@ public class _IdConsulta3 {
 		if (sucursal == -1) {
 			return  formaDePago.toString();
 		}
-		return "Sucursal N° " + sucursal + " >> " + formaDePago.toString();
+		return "Sucursal N° " + sucursal + " | " + formaDePago.toString();
 	}
 	
 }

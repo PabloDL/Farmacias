@@ -35,8 +35,8 @@ public class ObjetoConsulta4 {
 
 	@Override
 	public String toString() {
-		return _id.toString()  + " >> cantidad=" + this.Cantidad_vendida
-				+ ">> TotalVenta=" + Total_venta;
+		return _id.toString()  + " | cantidad=" + this.Cantidad_vendida
+				+ "| TotalVenta=" + Total_venta;
 	}
 	
 }
