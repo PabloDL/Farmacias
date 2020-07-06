@@ -173,17 +173,13 @@
   fecha: {
     $gte: ISODate('2020-06-02T00:00:00.000Z'),
     $lte: ISODate('2020-08-04T00:00:00.000Z')
-  },
-  'sucursal.idSucursal': {
-    $eq: 1
   }
-}}, {$unwind: {
+} }, {$unwind: {
   path: '$productos',
   includeArrayIndex: 'string',
   preserveNullAndEmptyArrays: true
 }}, {$group: {
   _id: {
-    sucursal: '$sucursal.idSucursal',
 
       producto: {
         tipo: '$productos.producto.tipo',
