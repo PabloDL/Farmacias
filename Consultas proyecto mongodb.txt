@@ -135,6 +135,68 @@
   'Cantidad_vendida ' : {$sum:'$productos.cantidad'}
 }}]
 
+
+-------------------------- 5 por sucursal------------------------------------------
+
+
+[{$match: {
+  fecha: {
+    $gte: ISODate('2020-06-02T00:00:00.000Z'),
+    $lte: ISODate('2020-08-04T00:00:00.000Z')
+  },
+  'sucursal.idSucursal': {
+    $eq: 1
+  }
+}}, {$unwind: {
+  path: '$productos',
+  includeArrayIndex: 'string',
+  preserveNullAndEmptyArrays: true
+}}, {$group: {
+  _id: {
+    sucursal: '$sucursal.idSucursal',
+
+      producto: {
+        tipo: '$productos.producto.tipo',
+        descripcion : '$productos.producto.descripcion'
+
+          }
+  },
+  Total_venta:  {$sum: '$TotalVenta'},
+  Cantidad_vendida : {$sum:'$productos.cantidad'}
+}}, {$sort: {
+  Total_venta: -1
+}}]
+
+-------------------------- 5 por cadena------------------------------------------
+
+[{$match: {
+  fecha: {
+    $gte: ISODate('2020-06-02T00:00:00.000Z'),
+    $lte: ISODate('2020-08-04T00:00:00.000Z')
+  },
+  'sucursal.idSucursal': {
+    $eq: 1
+  }
+}}, {$unwind: {
+  path: '$productos',
+  includeArrayIndex: 'string',
+  preserveNullAndEmptyArrays: true
+}}, {$group: {
+  _id: {
+    sucursal: '$sucursal.idSucursal',
+
+      producto: {
+        tipo: '$productos.producto.tipo',
+        descripcion : '$productos.producto.descripcion'
+
+          }
+  },
+  Total_venta:  {$sum: '$TotalVenta'},
+  Cantidad_vendida : {$sum:'$productos.cantidad'}
+}}, {$sort: {
+  Total_venta: -1
+}}]
+
 -------------- consulta 7 por cadena-----------------
 
 [{$match: {
