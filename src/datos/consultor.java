@@ -251,18 +251,18 @@ public class consultor {
 		if (sucursal != -1) {
 			
 			System.out.println("Por Sucursal:");
-			result =  collection.aggregate(Arrays.asList(match(and(gte("fecha", 
+			result =collection.aggregate(Arrays.asList(match(and(and(gte("fecha", 
 				    new java.util.Date(1591056000000L)), lte("fecha", 
-				    	    new java.util.Date(1596499200000L)))), unwind("$productos", 
-				    	    new UnwindOptions().includeArrayIndex("string").preserveNullAndEmptyArrays(true)), group(eq("producto", and(eq("tipo", "$productos.producto.tipo"), eq("descripcion", "$productos.producto.descripcion"))), sum("Total_venta", "$TotalVenta"), sum("Cantidad_vendida", "$productos.cantidad")), sort(descending("Cantidad_vendida"))));
+				    	    new java.util.Date(1596499200000L))), eq("sucursal.idSucursal", 1L))), unwind("$productos", 
+				    	    new UnwindOptions().includeArrayIndex("string").preserveNullAndEmptyArrays(true)), group(and(eq("sucursal", "$sucursal.idSucursal"), eq("producto", and(eq("tipo", "$productos.producto.tipo"), eq("descripcion", "$productos.producto.descripcion")))), sum("Total_venta", "$TotalVenta"), sum("Cantidad_vendida", "$productos.cantidad")), sort(descending("Cantidad_vendida"))));  
 		}
 		else {
 			System.out.println("Por cadena:");
 			
-			result = collection.aggregate(Arrays.asList(match(and(and(gte("fecha", 
+			result = collection.aggregate(Arrays.asList(match(and(gte("fecha", 
 				    new java.util.Date(1591056000000L)), lte("fecha", 
-				    	    new java.util.Date(1596499200000L))), eq("sucursal.idSucursal", 1L))), unwind("$productos", 
-				    	    new UnwindOptions().includeArrayIndex("string").preserveNullAndEmptyArrays(true)), group(and(eq("sucursal", "$sucursal.idSucursal"), eq("producto", and(eq("tipo", "$productos.producto.tipo"), eq("descripcion", "$productos.producto.descripcion")))), sum("Total_venta", "$TotalVenta"), sum("Cantidad_vendida", "$productos.cantidad")), sort(descending("Cantidad_vendida"))));
+				    	    new java.util.Date(1596499200000L)))), unwind("$productos", 
+				    	    new UnwindOptions().includeArrayIndex("string").preserveNullAndEmptyArrays(true)), group(eq("producto", and(eq("tipo", "$productos.producto.tipo"), eq("descripcion", "$productos.producto.descripcion"))), sum("Total_venta", "$TotalVenta"), sum("Cantidad_vendida", "$productos.cantidad")), sort(descending("Cantidad_vendida"))));
 				
 		}
 		//IMPRIMO RESULTADOS 
