@@ -25,7 +25,7 @@ public class _idConsulta2 {
 	@Override
 	public String toString() {
 		if (sucursal == -1)
-			return "| " + cliente.toString();
+			return  cliente.toString();
 		else 
 			return "Sucursal: " + sucursal + "| " + cliente.toString();
 	}
