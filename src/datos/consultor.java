@@ -236,7 +236,7 @@ public class consultor {
 	  * 1 - por sucursal
 	  * -1 - por cadena 
 	  * */
-	 public void consultaPunto6(long sucursal) {
+	 public void consultaPunto6(long idSucursal) {
 		
 		MongoClient mongoClient = new MongoClient(
 			    new MongoClientURI(
@@ -248,12 +248,12 @@ public class consultor {
 
 		AggregateIterable<Document> result;
 		
-		if (sucursal != -1) {
+		if (idSucursal != -1) {
 			
 			System.out.println("Por Sucursal:");
 			result =collection.aggregate(Arrays.asList(match(and(and(gte("fecha", 
 				    new java.util.Date(1591056000000L)), lte("fecha", 
-				    	    new java.util.Date(1596499200000L))), eq("sucursal.idSucursal", 1L))), unwind("$productos", 
+				    	    new java.util.Date(1596499200000L))), eq("sucursal.idSucursal", idSucursal))), unwind("$productos", 
 				    	    new UnwindOptions().includeArrayIndex("string").preserveNullAndEmptyArrays(true)), group(and(eq("sucursal", "$sucursal.idSucursal"), eq("producto", and(eq("tipo", "$productos.producto.tipo"), eq("descripcion", "$productos.producto.descripcion")))), sum("Total_venta", "$TotalVenta"), sum("Cantidad_vendida", "$productos.cantidad")), sort(descending("Cantidad_vendida"))));  
 		}
 		else {

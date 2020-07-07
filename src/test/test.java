@@ -85,8 +85,11 @@ public class test {
 		/*
 		 * CONSULTA 6
 		 */
-		System.out.print("CONSULTA 6 - FILTRADO POR SUCURSAL:\n");
+		System.out.print("CONSULTA 6 - FILTRADO POR SUCURSAL 1:\n");
 		consultor.consultaPunto6(1);
+		System.out.print("\n");
+		System.out.print("CONSULTA 6 - FILTRADO POR SUCURSAL 2:\n");
+		consultor.consultaPunto6(2);
 		System.out.print("\n");
 		System.out.print("CONSULTA 6 - FILTRADO CADENA:\n");
 		consultor.consultaPunto6(-1);
